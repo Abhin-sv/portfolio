@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Abhin SV — Neon Tech Portfolio</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- tsParticles (background) -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0-engine/tsparticles.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js" defer></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" defer></script>
+
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
+
+  <!-- Site script -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="tsparticles"></div>
+  <div class="neon-grid"></div>
+
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="brand">ABHIN • SV</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="cta" onclick="scrollToContact()">Contact</button>
+  </nav>
+
+  <header class="hero" id="home" role="banner">
+    <div class="hero-inner">
+      <h1 class="hero-title">Hi, I'm <span class="name">Abhin SV</span></h1>
+      <div class="hero-subtitle"><span id="typed"></span></div>
+      <p class="hero-desc">DevOps Engineer • Systems Automation • Cloud-native infrastructure</p>
+      <div class="hero-ctas">
+        <a class="btn" href="#projects">View Projects</a>
+        <a class="btn ghost" href="./Abhin_SV_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/Abhin-sv" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/abhin-sv" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <svg class="neon-orb" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <radialGradient id="g1" cx="50%" cy="35%">
+            <stop offset="0%" stop-color="#8ef0ff" stop-opacity="0.95"/>
+            <stop offset="50%" stop-color="#b14dff" stop-opacity="0.45"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="100" cy="100" r="80" fill="url(#g1)" />
+      </svg>
+    </div>
+  </header>
+
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="panel">
+      <div class="container">
+        <h2 class="panel-title">About Me</h2>
+        <div class="panel-grid">
+          <div class="card glass">
+            <h3>DevOps Engineer</h3>
+            <p>System Administrator turned DevOps enthusiast. Skilled with Linux, automation, CI/CD, cloud platforms, container orchestration and infrastructure as code.</p>
+            <p class="muted">Based in India · Open to remote opportunities</p>
+          </div>
+
+          <div class="card glass">
+            <h3>Contact</h3>
+            <ul class="info">
+              <li><strong>Email:</strong> <a href="mailto:abhinsv2001@gmail.com">abhinsv2001@gmail.com</a></li>
+              <li><strong>GitHub:</strong> <a href="https://github.com/Abhin-sv" target="_blank" rel="noopener">github.com/Abhin-sv</a></li>
+              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/abhin-sv" target="_blank" rel="noopener">linkedin.com/in/abhin-sv</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="panel alt">
+      <div class="container">
+        <h2 class="panel-title">Skills</h2>
+        <div class="skills-grid">
+          <span class="skill">Linux</span>
+          <span class="skill">Docker</span>
+          <span class="skill">Kubernetes</span>
+          <span class="skill">Terraform</span>
+          <span class="skill">Ansible</span>
+          <span class="skill">AWS</span>
+          <span class="skill">CI/CD</span>
+          <span class="skill">Python</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="panel">
+      <div class="container">
+        <h2 class="panel-title">Projects</h2>
+        <p class="lead">Automatically populated from your GitHub public repositories (Abhin-sv)</p>
+        <div id="projects-grid" class="projects-grid">
+          <!-- JS will inject project cards here -->
+          <div class="loader-card">Loading projects…</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="panel dark">
+      <div class="container contact-grid">
+        <div>
+          <h2 class="panel-title">Let's Talk</h2>
+          <p>Want to collaborate? Send a message — I’ll get back to you soon.</p>
+          <ul class="info">
+            <li><strong>Email:</strong> <a href="mailto:abhinsv2001@gmail.com">abhinsv2001@gmail.com</a></li>
+          </ul>
+        </div>
+
+        <!-- Formspree form: replace YOUR_FORMSPREE_ID with your form ID from Formspree -->
+        <form id="contactForm" class="contact-form" method="POST" action="https://formspree.io/f/mnngkqer">
+          <label>
+            <span>Name</span>
+            <input name="name" required placeholder="Your name" type="text" />
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input name="_replyto" required placeholder="you@example.com" type="email" />
+          </label>
+
+          <label>
+            <span>Message</span>
+            <textarea name="message" required placeholder="Say hi..." rows="5"></textarea>
+          </label>
+
+          <button class="btn" type="submit">Send Message</button>
+          <p id="formStatus" class="muted" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2025 Abhin SV · Devops Engineer ✨</p>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
