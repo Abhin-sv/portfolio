@@ -1,275 +1,144 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Abhin SV - DevOps Engineer</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- tsParticles (background) -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0-engine/tsparticles.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.0/tsparticles.bundle.min.js" defer></script>
-
-  <!-- GSAP + ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" defer></script>
-
-  <!-- Typed.js -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" defer></script>
-
-  <!-- Site script -->
-  <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neon Tech Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <!-- Particles Background -->
   <div id="tsparticles"></div>
   <div class="neon-grid"></div>
 
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-    <div class="brand">ABHIN SV</div>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="brand">Abhin-sv</div>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Educational Qualification</a></li>
-      <li><a href="#skills">Work Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#work">Work Experience</a></li>
+      <li><a href="#education">Educational Qualification</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><button class="cta" onclick="scrollToContact()">Contact</button></li>
     </ul>
-    <button class="cta" onclick="scrollToContact()">Contact</button>
   </nav>
 
-  <header class="hero" id="home" role="banner">
+  <!-- HERO -->
+  <section class="hero" id="about">
     <div class="hero-inner">
-      <h1 class="hero-title">Hi, I am <span class="name">ABHIN SV</span></h1>
-      <div class="hero-subtitle"><span id="typed"></span></div>
-      <p class="hero-desc">DevOps Engineer • Systems Administrator • Network Engineer</p>
-      <div class="hero-ctas">
-        <a class="btn" href="#projects">View Projects</a>
-        <a class="btn ghost" href="./Abhin_SV_Resume.pdf" target="_blank" rel="noopener">Resume</a>
-      </div>
-      <div class="socials">
-        <a href="https://github.com/Abhin-sv" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/abhin-sv" target="_blank" rel="noopener">LinkedIn</a>
+      <h1 class="hero-title">Hi, I'm <span class="name">Abhin-sv</span></h1>
+      <h2 class="hero-subtitle"><span id="typed"></span></h2>
+      <p class="hero-desc">Passionate about building automation, cloud infrastructure, and scalable systems with a neon-tech flair.</p>
+      <a href="#contact" class="btn">Get In Touch</a>
+    </div>
+    <div class="hero-visual">
+      <div class="neon-orb"></div>
+    </div>
+  </section>
+
+  <!-- WORK EXPERIENCE -->
+  <section class="panel" id="work">
+    <div class="container">
+      <h2 class="panel-title">Work Experience</h2>
+      <div class="panel-grid">
+        <!-- Example work experience card -->
+        <article class="experience-card card">
+          <h3>Systems Engineer</h3>
+          <p>Company XYZ | 2023 - Present</p>
+          <p>Worked on cloud infrastructure automation using Kubernetes and Terraform.</p>
+        </article>
+        <!-- Add your work experience cards here -->
       </div>
     </div>
+  </section>
 
-    <div class="hero-visual" aria-hidden="true">
-      <svg class="neon-orb" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <radialGradient id="g1" cx="50%" cy="35%">
-            <stop offset="0%" stop-color="#8ef0ff" stop-opacity="0.95"/>
-            <stop offset="50%" stop-color="#b14dff" stop-opacity="0.45"/>
-            <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <circle cx="100" cy="100" r="80" fill="url(#g1)" />
-      </svg>
-    </div>
-  </header>
-
-  <main>
-    <!-- ABOUT -->
-    <section id="about" class="panel">
-      <div class="container">
-        <h2 class="panel-title">About Me</h2>
-        <div class="panel-grid">
-          <div class="card glass">
-            <h3>DevOps Engineer</h3>
-            <p>A dedicated DevOps Engineer bringing 2 years of hands-on experience as a System Administrator. Possessing
-a robust understanding of system architecture and infrastructure management, eager to apply this
-foundational knowledge to establish seamless CI/CD pipelines and optimize cloud environments. Driven to
-enhance operational efficiency and contribute to scalable software delivery within a collaborative DevOps
-framework..</p>
-            <p class="muted">Based in India · Open to remote opportunities</p>
-          </div>
-
-          <div class="card glass">
-            <h3>Contact</h3>
-            <ul class="info">
-              <li><strong>Email:</strong> <a href="mailto:abhinsv2001@gmail.com">abhinsv2001@gmail.com</a></li>
-              <li><strong>GitHub:</strong> <a href="https://github.com/Abhin-sv" target="_blank" rel="noopener">github.com/Abhin-sv</a></li>
-              <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/abhin-sv" target="_blank" rel="noopener">linkedin.com/in/abhin-sv</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="panel alt">
-      <div class="container">
-        <h2 class="panel-title">Skills</h2>
-        <div class="skills-grid">
-          <span class="skill">Linux</span>
-          <span class="skill">Docker</span>
-          <span class="skill">Kubernetes</span>
-          <span class="skill">Terraform</span>
-          <span class="skill">Ansible</span>
-          <span class="skill">AWS</span>
-          <span class="skill">CI/CD</span>
-          <span class="skill">Linux System Administration</span>
-          <span class="skill">Networking (CCNA basics)</span>
-            <span class="skill">Networking Protocols (TCP/IP, DNS, DHCP)</span>
-            <span class="skill">AWS CloudWindows Server</span>
-            <span class="skill">Cloud Platforms (AWS, Azure)</span>
-            <span class="skill">Docker</span>
-            <span class="skill">Kubernetes</span>
-            <span class="skill">Terraform</span>
-            <span class="skill">Ansible</span>
-            <span class="skill">Python</span>
-            <span class="skill">Bash Scripting</span>
-            <span class="skill">PowerShell Scripting</span>
-            <span class="skill">CI/CD (GitHub Actions, Jenkins)</span>
-            <span class="skill">Monitoring (Prometheus, Grafana)</span>
-            <span class="skill">Git & GitHub</span>
-            <span class="skill">Shell Scripting</span>
-            <span class="skill">Jenkins</span>
-            <span class="skill">GitHub Actions</span>
-            <span class="skill">GitLab CI</span>
-            <span class="skill">AWS (EC2, S3, IAM)</span>
-            <span class="skill">Azure</span>
-            <span class="skill">GCP</span>
-            <span class="skill">GitOps</span>
-            <span class="skill">CloudFormation</span>
-            <span class="skill">Bash</span>
-            <span class="skill">PowerShell</span>
-            <span class="skill">Puppet</span>
-            <span class="skill">Chef</span>
-            <span class="skill">cron</span>
-            <span class="skill">Task Scheduler</span>
-            <span class="skill">Linux (Ubuntu, CentOS)</span>
-            <span class="skill">Windows Server (AD, DNS, GPO, ADFS)</span>
-            <span class="skill">LDAP</span>
-            <span class="skill">System Hardening</span>
-            <span class="skill">Patch Management</span>
-            <span class="skill">Prometheus</span>
-            <span class="skill">Grafana</span>
-            <span class="skill">ELK Stack</span>
-            <span class="skill">Nagios</span>
-            <span class="skill">Graylog</span>
-            <span class="skill">journalctl</span>
-            <span class="skill">syslog</span>
-            <span class="skill">Windows Event Viewer</span>
-            <span class="skill">TCP/IP</span>
-            <span class="skill">DNS</span>
-            <span class="skill">DHCP</span>
-            <span class="skill">Firewall</span>
-            <span class="skill">Subnetting</span>
-            <span class="skill">VMware</span>
-            <span class="skill">VirtualBox</span>
-            <span class="skill">KVM</span>
-            <span class="skill">Git</span>
-            <span class="skill">GitHub</span>
-            <span class="skill">GitLab</span>
-            <span class="skill">rsync</span>
-            <span class="skill">Veeam</span>
-            <span class="skill">Apache</span>
-            <span class="skill">Nginx</span>
-            <span class="skill">REST APIs</span>
-            <span class="skill">Webhooks</span>
-            <span class="skill">Python</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="panel">
-      <div class="container">
-        <h2 class="panel-title">Projects</h2>
-        <p class="lead">Automatically populated from your GitHub public repositories (Abhin-sv)</p>
-        <div id="projects-grid" class="projects-grid">
-          <!-- JS will inject project cards here -->
-          <div class="loader-card">Loading projects…</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience" class="section">
-  <h2 class="section-title">💼 Work Experience</h2>
-
-  <div class="experience-container">
-
-    <div class="experience-card">
-      <h3>System Administrator</h3>
-      <h4>Caits Info Solutions, Kochi</h4>
-      <p class="duration">December 2024 – Present</p>
-      <p class="location"><i>Deployed at Cochin International Airport ATS Tower</i></p>
-      <ul>
-        <li>Administering Windows and Linux servers ensuring high availability and security.</li>
-        <li>Implementing user access controls, patch management, and automated backups.</li>
-        <li>Configured system monitoring tools to track performance and minimize downtime.</li>
+  <!-- EDUCATIONAL QUALIFICATION -->
+  <section class="panel alt" id="education">
+    <div class="container">
+      <h2 class="panel-title">Educational Qualification</h2>
+      <ul class="info">
+        <li><strong>Bachelor of Computer Applications (BCA) (Pursuing)</strong> – Indira Gandhi National Open University (IGNOU) (2025)</li>
+        <li><strong>Diploma in Computer Engineering</strong> – Govt. Polytechnic College Neyyattinkara (2023)</li>
+        <li><strong>Biology Science (Higher Secondary)</strong> – Govt LVHSS Arayoor (2020)</li>
+        <li><strong>SSLC</strong> – Govt VHSS Kulathoor (2018)</li>
       </ul>
     </div>
+  </section>
 
-    <div class="experience-card">
-      <h3>Server Administrator Intern</h3>
-      <h4>Hashroot Private Solutions</h4>
-      <p class="duration">July 2024 – September 2024</p>
-      <ul>
-        <li>Configured and maintained Linux-based servers and virtual machines.</li>
-        <li>Automated server management tasks using shell scripting.</li>
-        <li>Monitored performance metrics and participated in troubleshooting and log analysis.</li>
+  <!-- PROJECTS -->
+  <section class="panel" id="projects">
+    <div class="container">
+      <h2 class="panel-title">Projects</h2>
+      <div id="projects-grid" class="projects-grid"></div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="panel alt" id="certifications">
+    <div class="container">
+      <h2 class="panel-title">Certifications</h2>
+      <ul class="info">
+        <li><strong>Network Engineering</strong> – Synnefo Solutions (2024)</li>
+        <li><strong>DCA</strong> <i>(Diploma in Computer Application)</i></li>
+        <li><strong>NCC</strong> <i>(C Certificate)</i></li>
+        <li><strong>ASAP</strong> <i>(Additional Skill Acquisition Programme Kerala)</i></li>
       </ul>
     </div>
+  </section>
 
-    <div class="experience-card">
-      <h3>Network Support Engineer</h3>
-      <h4>Syynefo Solutions</h4>
-      <p class="duration">January 2024 – April 2024</p>
-      <ul>
-        <li>Provided support for LAN/WAN configurations and network performance monitoring.</li>
-        <li>Troubleshot and resolved network issues ensuring minimal downtime.</li>
-        <li>Hands-on experience with switches, routers, and firewall configurations.</li>
-      </ul>
+  <!-- SKILLS -->
+  <section class="panel" id="skills">
+    <div class="container">
+      <h2 class="panel-title">Skills</h2>
+      <div class="skills-grid">
+        <span class="skill">Linux</span>
+        <span class="skill">Kubernetes</span>
+        <span class="skill">Terraform</span>
+        <span class="skill">CI/CD</span>
+        <span class="skill">Cloud Infrastructure</span>
+        <span class="skill">Infrastructure as Code</span>
+        <span class="skill">Monitoring</span>
+        <!-- Add more skills as needed -->
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="panel dark">
-      <div class="container contact-grid">
-        <div>
-          <h2 class="panel-title">Let's Talk</h2>
-          <p>Want to collaborate? Send a message — I’ll get back to you soon.</p>
-          <ul class="info">
-            <li><strong>Email:</strong> <a href="mailto:abhinsv2001@gmail.com">abhinsv2001@gmail.com</a></li>
-          </ul>
-        </div>
-
-        <!-- Formspree form: replace YOUR_FORMSPREE_ID with your form ID from Formspree -->
-        <form id="contactForm" class="contact-form" method="POST" action="https://formspree.io/f/mnngkqer">
-          <label>
-            <span>Name</span>
-            <input name="name" required placeholder="Your name" type="text" />
-          </label>
-
-          <label>
-            <span>Email</span>
-            <input name="_replyto" required placeholder="you@example.com" type="email" />
-          </label>
-
-          <label>
-            <span>Message</span>
-            <textarea name="message" required placeholder="Say hi..." rows="5"></textarea>
-          </label>
-
-          <button class="btn" type="submit">Send Message</button>
-          <p id="formStatus" class="muted" aria-live="polite"></p>
-        </form>
+  <!-- CONTACT -->
+  <section class="panel alt" id="contact">
+    <div class="container contact-grid">
+      <form id="contactForm" class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+        <label>Name
+          <input type="text" name="name" required />
+        </label>
+        <label>Email
+          <input type="email" name="_replyto" required />
+        </label>
+        <label>Message
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit" class="btn">Send</button>
+        <p id="formStatus"></p>
+      </form>
+      <div>
+        <h3>Get in touch</h3>
+        <p>Feel free to reach out for collaborations or questions!</p>
+        <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer class="site-footer">
-      <div class="container">
-        <p>© 2025 Abhin SV · Devops Engineer ✨</p>
-      </div>
-    </footer>
-  </main>
+  <footer class="site-footer">
+    <p>© 2025 Abhin-sv | Built with Neon Tech</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
