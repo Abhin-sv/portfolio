@@ -1,148 +1,100 @@
-/* Neon tech single page script
-   - tsParticles background
-   - Typed.js hero subtitle
-   - GSAP scroll animations
-   - GitHub API fetch for projects (user: Abhin-sv)
-   - Formspree submission handler (graceful client-side UX)
-*/
-
-document.addEventListener('DOMContentLoaded', () => {
-  // 1) Particles
-  tsParticles.load("tsparticles", {
-    fpsLimit: 60,
-    background: { color: { value: "transparent" } },
-    particles: {
-      number: { value: 50, density: { enable: true, area: 900 } },
-      color: { value: ["#8ef0ff", "#b14dff", "#ff5ca8"] },
-      shape: { type: "circle" },
-      opacity: { value: 0.12 },
-      size: { value: { min: 1, max: 4 } },
-      move: { enable: true, speed: 0.9, outModes: "out" },
-      links: { enable: true, distance: 140, color: "#7bd6ff", opacity: 0.06, width: 1 },
-    },
-    interactivity: {
-      events: { onHover: { enable: true, mode: "repulse" }, onClick: { enable: true, mode: "push" } },
-      modes: { repulse: { distance: 80 }, push: { quantity: 3 } }
-    },
-    detectRetina: true
-  });
-
-  // 2) Typed.js
-  const typed = new Typed('#typed', {
-    strings: ["Systems Automation • Cloud • CI/CD", "Linux • Kubernetes • Terraform", "Infrastructure as Code • Monitoring"],
-    typeSpeed: 45, backSpeed: 25, backDelay: 1600, loop: true
-  });
-
-  // 3) GSAP scroll animations
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.from(".hero-title", { y: 24, opacity: 0, duration: 1, ease: "power3.out" });
-  gsap.from(".hero-subtitle", { y: 16, opacity: 0, delay: 0.2, duration: 0.9 });
-  gsap.from(".hero-desc", { y: 12, opacity: 0, delay: 0.35, duration: 0.8 });
-
-  gsap.utils.toArray('.card, .project.card').forEach(el => {
-    gsap.from(el, {
-      scrollTrigger: {
-        trigger: el,
-        start: "top 85%",
-        toggleActions: "play none none reverse"
-      },
-      y: 30, opacity: 0, duration: 0.9, ease: "power3.out"
-    });
-  });
-
-  gsap.from(".skill", {
-    scrollTrigger: { trigger: "#skills", start: "top 80%" },
-    y: 18, opacity: 0, duration: 0.8, stagger: 0.06, ease: "power2.out"
-  });
-
-  gsap.to(".neon-orb", { y: -14, duration: 6, repeat: -1, yoyo: true, ease: "sine.inOut" });
-
-  // Button micro interactions
-  document.querySelectorAll('.btn').forEach(b => {
-    b.addEventListener('mouseenter', () => gsap.to(b, { scale: 1.02, duration: 0.18 }));
-    b.addEventListener('mouseleave', () => gsap.to(b, { scale: 1, duration: 0.18 }));
-  });
-
-  // 4) Fetch GitHub repos and render projects grid
-  loadGithubProjects('Abhin-sv');
-
-  // 5) Formspree UX: intercept submit to show status, but let native post happen
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-      const statusEl = document.getElementById('formStatus');
-      statusEl.textContent = 'Sending message…';
-      setTimeout(() => {
-        statusEl.textContent = 'If the page did not navigate, your message was probably sent. Check your email.';
-      }, 1400);
-    });
-  }
-}); // DOMContentLoaded end
-
-// Smoothly scroll to contact
-function scrollToContact(){
-  const el = document.querySelector('#contact');
-  if (el) el.scrollIntoView({behavior:'smooth'});
+:root{
+  --bg1:#0b0b10;
+  --accent1:#8ef0ff;
+  --accent2:#b14dff;
+  --accent3:#ff5ca8;
+  --muted:rgba(255,255,255,0.66);
+  --glass:rgba(255,255,255,0.03);
+  --radius:14px;
+  font-family:'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
 }
 
-// -------------- GitHub fetcher --------------
-async function loadGithubProjects(username){
-  const grid = document.getElementById('projects-grid');
-  if(!grid) return;
-  grid.innerHTML = `<div class="loader-card">Loading projects…</div>`;
-
-  try {
-    const res = await fetch(`https://api.github.com/users/${encodeURIComponent(username)}/repos?per_page=100`);
-    if(!res.ok) throw new Error('GitHub API error: ' + res.status);
-    const repos = await res.json();
-
-    const filtered = repos
-      .filter(r => !r.fork)
-      .sort((a,b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.updated_at) - new Date(a.updated_at)))
-      .slice(0,12);
-
-    if(filtered.length === 0){
-      grid.innerHTML = `<div class="project card"><h4>No public projects found</h4><p>Add some repos to GitHub or make them public to populate this section.</p></div>`;
-      return;
-    }
-
-    grid.innerHTML = '';
-    filtered.forEach(repo => {
-      const card = document.createElement('article');
-      card.className = 'project card neon-glow';
-      card.innerHTML = `
-        <h3><a href="${repo.html_url}" target="_blank" rel="noopener">${escapeHtml(repo.name)}</a></h3>
-        <p>${escapeHtml(repo.description || 'No description')}</p>
-        <div class="proj-meta">
-          <span title="Language">${escapeHtml(repo.language || '—')}</span>
-          <span title="Stars">⭐ ${repo.stargazers_count}</span>
-          <span title="Updated">${new Date(repo.updated_at).toLocaleDateString()}</span>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
-
-    gsap.from('.project.card', { y: 18, opacity: 0, duration: 0.8, stagger: 0.08, ease: "power2.out", scrollTrigger: { trigger: '#projects', start: 'top 80%' } });
-  } catch (err) {
-    console.error(err);
-    grid.innerHTML = `<div class="project card"><h4>Unable to load projects</h4><p class="muted">There was an error fetching repos from GitHub (rate limit or network). Try again later.</p></div>`;
-  }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#05050a 0%,#060616 60%);
+  color:#e6eef6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
 }
 
-// small HTML escape to avoid XSS from repo descriptions (defensive)
-function escapeHtml(str){
-  return String(str).replace(/[&<>"'`=\/]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','/':'&#x2F;','`':'&#x60;','=':'&#x3D;'}[s]));
+/* Particles & overlay */
+#tsparticles{position:fixed;inset:0;z-index:0}
+.neon-grid{pointer-events:none;position:fixed;inset:0;background-image:linear-gradient(transparent 82%, rgba(255,255,255,0.02) 82%),linear-gradient(90deg, transparent 82%, rgba(255,255,255,0.02) 82%);mix-blend-mode:screen;opacity:0.18;z-index:1}
+
+/* NAV */
+.nav{position:fixed;z-index:60;left:0;right:0;top:18px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;gap:18px}
+.brand{font-weight:800;color:var(--accent1)}
+.nav-links{display:flex;gap:16px;list-style:none;margin:0;padding:0;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:600;cursor:pointer;}
+.cta{background:linear-gradient(90deg,var(--accent2),var(--accent1));border:none;color:#010112;padding:8px 12px;border-radius:10px;font-weight:700;cursor:pointer}
+
+/* HERO */
+.hero{min-height:92vh;display:grid;grid-template-columns:1fr 420px;align-items:center;padding:96px 24px 64px;gap:36px;position:relative;z-index:10}
+.hero-inner{max-width:760px}
+.hero-title{font-size:44px;margin:0 0 8px;color:#fff}
+.name{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-subtitle{font-weight:600;color:var(--accent1);margin-bottom:14px}
+.hero-desc{color:var(--muted);max-width:680px}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent3));color:#0b0710;text-decoration:none;font-weight:700;margin-right:10px;box-shadow:0 10px 30px rgba(0,0,0,0.45)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+.hero-visual{display:flex;align-items:center;justify-content:center}
+.neon-orb{width:360px;height:360px;filter:blur(18px)}
+
+/* PANELS */
+.panel{padding:72px 24px;position:relative;z-index:5}
+.panel.alt{background:linear-gradient(180deg, rgba(255,255,255,0.012), rgba(255,255,255,0.008));backdrop-filter: blur(6px)}
+.container{max-width:1100px;margin:0 auto}
+.panel-title{font-size:28px;margin:0 0 20px;color:var(--accent2)}
+
+/* Grid & cards */
+.panel-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:14px;padding:20px;border:1px solid var(--glass)}
+.info{list-style:none;padding:0;margin:0;color:var(--muted)}
+.muted{color:var(--muted);font-size:13px}
+
+/* Skills */
+.skills-grid{display:flex;flex-wrap:wrap;gap:10px}
+.skill{background:linear-gradient(90deg,var(--accent1),var(--accent2));padding:9px 12px;border-radius:999px;font-weight:700;color:#030312}
+
+/* Projects */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:14px}
+.project.card{padding:18px;border-radius:12px;box-shadow:0 6px 40px rgba(11,11,20,0.6);transition:transform .28s ease}
+
+/* Project small meta */
+.proj-meta{display:flex;gap:8px;align-items:center;margin-top:10px;color:var(--muted);font-size:13px}
+.proj-meta span{display:inline-flex;gap:6px;align-items:center}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:start}
+.contact-form{display:flex;flex-direction:column;gap:12px;padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass)}
+.contact-form label{display:flex;flex-direction:column;font-size:13px;color:var(--muted)}
+.contact-form input, .contact-form textarea{padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--muted);resize:vertical}
+
+/* Footer */
+.site-footer{padding:28px 24px;color:var(--muted);text-align:center}
+
+/* Responsive */
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr; padding:64px 18px}
+  .hero-visual{display:none}
+  .panel-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
 }
-// Animate experience cards on scroll
-const expCards = document.querySelectorAll('.experience-card');
-const expObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.2 });
 
-expCards.forEach(card => expObserver.observe(card));
+/* Micro interactions */
+.project.card:hover{transform:translateY(-6px)}
 
+.experience-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.experience-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
