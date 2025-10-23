@@ -134,3 +134,15 @@ async function loadGithubProjects(username){
 function escapeHtml(str){
   return String(str).replace(/[&<>"'`=\/]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','/':'&#x2F;','`':'&#x60;','=':'&#x3D;'}[s]));
 }
+// Animate experience cards on scroll
+const expCards = document.querySelectorAll('.experience-card');
+const expObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
+  });
+}, { threshold: 0.2 });
+
+expCards.forEach(card => expObserver.observe(card));
+
