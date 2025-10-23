@@ -87,3 +87,14 @@ body{
 
 /* Micro interactions */
 .project.card:hover{transform:translateY(-6px)}
+
+.experience-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.experience-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
