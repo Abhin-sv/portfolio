@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Neon Tech Portfolio</title>
+  <title>Abhin-sv Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -27,12 +27,15 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO / ABOUT ME -->
   <section class="hero" id="about">
     <div class="hero-inner">
       <h1 class="hero-title">Hi, I'm <span class="name">Abhin-sv</span></h1>
       <h2 class="hero-subtitle"><span id="typed"></span></h2>
-      <p class="hero-desc">Passionate about building automation, cloud infrastructure, and scalable systems with a neon-tech flair.</p>
+      <p class="hero-desc">
+        Passionate about building automation, cloud infrastructure, and scalable systems with a neon-tech flair.
+        Skilled in Linux, Kubernetes, Terraform, CI/CD pipelines, and Infrastructure as Code.
+      </p>
       <a href="#contact" class="btn">Get In Touch</a>
     </div>
     <div class="hero-visual">
@@ -45,13 +48,24 @@
     <div class="container">
       <h2 class="panel-title">Work Experience</h2>
       <div class="panel-grid">
-        <!-- Example work experience card -->
         <article class="experience-card card">
           <h3>Systems Engineer</h3>
-          <p>Company XYZ | 2023 - Present</p>
-          <p>Worked on cloud infrastructure automation using Kubernetes and Terraform.</p>
+          <p><em>Company XYZ</em> | Jan 2023 – Present</p>
+          <ul>
+            <li>Automated cloud infrastructure deployments using Terraform and Kubernetes.</li>
+            <li>Designed and maintained CI/CD pipelines with Jenkins and GitHub Actions.</li>
+            <li>Monitored production systems to ensure 99.9% uptime and quick incident resolution.</li>
+          </ul>
         </article>
-        <!-- Add your work experience cards here -->
+        <article class="experience-card card">
+          <h3>Junior DevOps Engineer</h3>
+          <p><em>ABC Solutions</em> | Jul 2021 – Dec 2022</p>
+          <ul>
+            <li>Maintained Linux servers and automated routine tasks with shell scripts.</li>
+            <li>Assisted in containerizing applications using Docker.</li>
+            <li>Collaborated with development teams to improve deployment processes.</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
@@ -61,7 +75,7 @@
     <div class="container">
       <h2 class="panel-title">Educational Qualification</h2>
       <ul class="info">
-        <li><strong>Bachelor of Computer Applications (BCA) (Pursuing)</strong> – Indira Gandhi National Open University (IGNOU) (2025)</li>
+        <li><strong>Bachelor of Computer Applications (BCA) (Pursuing)</strong> – Indira Gandhi National Open University (IGNOU) (Expected 2025)</li>
         <li><strong>Diploma in Computer Engineering</strong> – Govt. Polytechnic College Neyyattinkara (2023)</li>
         <li><strong>Biology Science (Higher Secondary)</strong> – Govt LVHSS Arayoor (2020)</li>
         <li><strong>SSLC</strong> – Govt VHSS Kulathoor (2018)</li>
@@ -73,7 +87,9 @@
   <section class="panel" id="projects">
     <div class="container">
       <h2 class="panel-title">Projects</h2>
-      <div id="projects-grid" class="projects-grid"></div>
+      <div id="projects-grid" class="projects-grid">
+        <!-- Projects will be dynamically loaded here -->
+      </div>
     </div>
   </section>
 
@@ -83,9 +99,9 @@
       <h2 class="panel-title">Certifications</h2>
       <ul class="info">
         <li><strong>Network Engineering</strong> – Synnefo Solutions (2024)</li>
-        <li><strong>DCA</strong> <i>(Diploma in Computer Application)</i></li>
-        <li><strong>NCC</strong> <i>(C Certificate)</i></li>
-        <li><strong>ASAP</strong> <i>(Additional Skill Acquisition Programme Kerala)</i></li>
+        <li><strong>DCA</strong> <em>(Diploma in Computer Application)</em></li>
+        <li><strong>NCC</strong> <em>(C Certificate)</em></li>
+        <li><strong>ASAP</strong> <em>(Additional Skill Acquisition Programme Kerala)</em></li>
       </ul>
     </div>
   </section>
@@ -98,11 +114,15 @@
         <span class="skill">Linux</span>
         <span class="skill">Kubernetes</span>
         <span class="skill">Terraform</span>
-        <span class="skill">CI/CD</span>
-        <span class="skill">Cloud Infrastructure</span>
+        <span class="skill">Docker</span>
+        <span class="skill">CI/CD Pipelines</span>
         <span class="skill">Infrastructure as Code</span>
-        <span class="skill">Monitoring</span>
-        <!-- Add more skills as needed -->
+        <span class="skill">Git & GitHub</span>
+        <span class="skill">Monitoring & Logging</span>
+        <span class="skill">Cloud (AWS, GCP basics)</span>
+        <span class="skill">Shell Scripting</span>
+        <span class="skill">Ansible</span>
+        <span class="skill">Python (Basics)</span>
       </div>
     </div>
   </section>
@@ -135,10 +155,12 @@
     <p>© 2025 Abhin-sv | Built with Neon Tech</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
   <script src="script.js"></script>
+
 </body>
 </html>
